@@ -1,7 +1,24 @@
 import cv2
+import tkinter as tk
+from tkinter import simpledialog
 
-# Replace <server-ip> with the actual server IP.
-rtsp_url = "rtsp://<server-ip>:8554/mystream"
+# Function to get the RTSP URL from user input
+def get_server_ip():
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
+    server_ip = simpledialog.askstring("RTSP Stream", "Enter the RTSP Server IP Address:")
+    return server_ip
+
+# Ask the user for the server IP
+server_ip = get_server_ip()
+
+# Check if the user provided an IP
+if not server_ip:
+    print("No IP entered. Exiting.")
+    exit(1)
+
+# Construct the RTSP URL
+rtsp_url = f"rtsp://{server_ip}:8554/mystream"
 print(f"Connecting to RTSP stream at: {rtsp_url}")
 
 # Open the RTSP stream using OpenCV
@@ -10,10 +27,10 @@ if not cap.isOpened():
     print("Error: Cannot open RTSP stream. Check the URL and network connectivity.")
     exit(1)
 
-# Create a fullscreen window to display the stream
+# Create a resizable OpenCV window
 window_name = "Client - RTSP Stream"
-cv2.namedWindow(window_name, cv2.WND_PROP_FULLSCREEN)
-cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)  # Allow resizing
+cv2.resizeWindow(window_name, 800, 600)  # Set initial size
 
 while True:
     ret, frame = cap.read()
