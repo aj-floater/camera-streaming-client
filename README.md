@@ -1,7 +1,10 @@
 # Client Side RTSP Viewer
 
 ## Overview
-This client-side script connects to an RTSP stream served by a video server (such as MediaMTX) and displays the live video feed using OpenCV. It uses a simple GUI built with Tkinter to prompt the user for the server's IP address, constructs the RTSP URL, and then opens the stream in a resizable window.
+This client-side script connects to an RTSP stream served by a video server and displays the live video feed using OpenCV. It uses a simple GUI built with Tkinter to prompt the user for the server's IP address, constructs the RTSP URL, and then opens the stream in a resizable window.
+
+## Hack-a-Bot 2025
+This script provides a starting point for students participating in Task 2 of the UoM Robotics Society's 2025 Hackathon. It provides an interface with the video server hosted on the university network and should serve as a foundation for further development of your computer vision solution :)
 
 ## Features
 - **User Input via GUI:** Prompts the user to enter the RTSP server IP address.
@@ -16,13 +19,11 @@ This client-side script connects to an RTSP stream served by a video server (suc
 - An RTSP server (e.g., [MediaMTX](https://github.com/MediaMTX/MediaMTX)) that provides a stream at `rtsp://<server-ip>:8554/mystream`
 
 ## How to Use
-1. **Start Your RTSP Server:**  
-   Ensure your RTSP server (e.g., MediaMTX) is running and accessible.
-   
-2. **Run the Client Script:**  
-   Execute the script with:
+
+1. **Run the Client Script:**  
+   Execute this command within the cloned github repo:
    ```bash
-   python client.py
+   python .
    ```
    
 3. **Enter the Server IP:**  
@@ -56,7 +57,7 @@ The server side uses:
 This combination allows for efficient streaming over a local network with support for multiple clients.
 
 ## Screenshots
-Below are some screenshots of the program working on linux:
+Below are some screenshots of this client side program on linux connected to a video server hosted on my mac:
 
 - **GUI Input Dialog:**  
   ![GUI Input Dialog](images/gui_input_dialog.png)
